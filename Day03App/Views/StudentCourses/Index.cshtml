@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Add Degree";
+}
+
+<label for="stdid" class="form-label"></label>
+<select class="form-select mb-3" asp-items="ViewBag.stds" name="stdid" id="stdid">
+    <option disabled>Select Student</option>
+</select>
+
+<div id="courses">
+</div>
+
+@section Scripts{
+    <script>
+        $("#stdid").change(function() {
+            var id = $("#stdid").val();
+            $("#courses").load("/StudentCourses/GetCourses/" + id);
+        })
+
+    </script>
+}

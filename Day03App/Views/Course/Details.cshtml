@@ -1,0 +1,14 @@
+﻿@using Day04App.Models
+@model Course
+
+@{
+        //Layout = "_Layout3";
+    ViewData["Title"]="Course Details";
+}
+    <div class="card text-center" style="width: 12rem;">
+        <div class="card-body">
+            <h5 class="card-title">@Model.CrsName</h5>
+            <h6 class="card-subtitle mb-2 text-muted">ID : @Model.CrsID</h6>
+            <a href="/Course" class="btn btn-secondary">Back</a>
+        </div>
+    </div>

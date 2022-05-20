@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Select Department";
+}
+
+<label for="deptid" class="form-label"></label>
+<select class="form-select" asp-items="ViewBag.depts" name="deptid" id="deptid">
+    <option disabled>Select Department</option>
+</select>
+
+<div id="courses">
+</div>
+
+@section Scripts{
+    <script>
+        $("#deptid").change(function() {
+            var id = $("#deptid").val();
+            $("#courses").load("/DepartmentCourses/GetCourses/" + id);
+        })
+
+    </script>
+}

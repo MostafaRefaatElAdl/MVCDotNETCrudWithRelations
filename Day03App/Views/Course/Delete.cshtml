@@ -1,0 +1,20 @@
+﻿@using Day04App.Models
+@model Course
+@{
+        //Layout = "_Layout3";
+    ViewData["Title"]="Delete Course";
+}
+
+    <div class="container text-center">
+        <div class="alert alert-danger align-items-center " role="alert">
+            <div class="display-2" >
+                Are you sure you want to delete @Model.CrsName ? 
+
+            <form method="post">
+            <a href="/Course" class="btn btn-secondary btn-lg">Cancel</a>
+            <input type="hidden" asp-for=CrsID/>
+            <input class="btn btn-danger btn-lg" type="submit" value="Delete"/>
+                </form>
+            </div>
+        </div>
+    </div>

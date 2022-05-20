@@ -1,0 +1,21 @@
+﻿@using Day04App.Models
+@model Course
+@{
+    //Layout = "_Layout3";
+    ViewData["Title"] = "Edit Course";
+}
+<div class="container text-center">
+    <form method="post">
+        <div class="mb-3">
+            <input asp-for=CrsID class="form-control" hidden />
+        </div>
+        <partial name="CreateEdit" />
+
+
+        <button type="submit" class="btn btn-success">Update</button>
+    </form>
+</div>
+@section Scripts{
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    }

@@ -1,0 +1,38 @@
+﻿@using Day04App.Models
+@model List<Student>
+@{
+    //Layout = "_Layout3";
+    ViewData["Title"] = "student Home";
+}
+
+    <div class="container mt-5 text-center">
+        <table class="table table-hover table-dark text-center">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Depratment</th>
+                    <th>Oprations</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Age</td>
+                        <td>@item.Department.Name</td>
+                        <td>
+                            <a class="btn btn-primary" href="/student/details/@item.Id"> Details </a>
+                            <a class="btn btn-secondary" href="/student/edit/@item.Id"> Edit </a>
+                            <a class="btn btn-danger" href="/student/delete/@item.Id"> Delete </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a class="btn btn-outline-success w-100 " href="/student/Create"> Add New student</a>
+    </div>
+

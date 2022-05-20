@@ -1,0 +1,27 @@
+﻿@model DepartmentCourseViewModel
+
+
+<form asp-action="updateCourses" asp-controller="DepartmentCourses" >
+    <input hidden name="id" value="@Model.Department.Id" />
+<div class="container">
+    <div class="row">
+        <select class="form-select col m-3" multiple name="coursesInDept">
+            <option disabled>Courses In @Model.Department.Name (Choose to discard)</option>
+            @foreach (var item in Model.CoursesInDept)
+            {
+                <option value="@item.CrsID">@item.CrsName</option>
+            }
+        </select>
+        <select class="form-select col m-3" multiple name="coursesNotInDept">
+            <option disabled>Courses Not In @Model.Department.Name (Choose to Add)</option>
+            @foreach (var item in Model.CoursesNotInDept)
+            {
+                <option value="@item.CrsID">@item.CrsName</option>
+            }
+        </select>
+    </div>
+</div>
+
+
+    <input type="submit" class="btn btn-success m-3" value="Submit"/>
+</form>
