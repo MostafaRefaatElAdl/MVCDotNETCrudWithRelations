@@ -23,8 +23,6 @@ namespace Day04App.Controllers
 
         public IActionResult GetCourses(int id)
         {
-            //List<StudentCourses> stdCrss = _db.StudentCourses.Include(x=>x.Course).AsNoTracking().ToList();
-
             Student std = _db.Students.Include(x => x.Department).AsNoTracking().FirstOrDefault(s => s.Id == id);
             Department stdDpt = _db.Departments.Include(x => x.CoursesInDept).AsNoTracking().FirstOrDefault(x => x.Id == std.Department.Id);
 
