@@ -1,4 +1,4 @@
-# ASP.NET CRUD 
+# .NET MVC CRUD 
 with Entityframework Using SQL Database with some relations 
 
 ## Demo
