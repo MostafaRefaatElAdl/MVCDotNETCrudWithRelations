@@ -24,14 +24,21 @@ namespace Day04App.Controllers
         public IActionResult GetCourses(int id)
         {
             Student std = _db.Students.Include(x => x.Department).AsNoTracking().FirstOrDefault(s => s.Id == id);
-            Department stdDpt = _db.Departments.Include(x => x.CoursesInDept).AsNoTracking().FirstOrDefault(x => x.Id == std.Department.Id);
-
+            //Department stdDpt = _db.Departments.Include(x => x.CoursesInDept).AsNoTracking().FirstOrDefault(x => x.Id == std.DeptId);
+            
             Student stdCrsToAdd = _db.Students.Include(x => x.StudentCourses).ThenInclude(x => x.Course).FirstOrDefault(x => x.Id == id);
-            for (int i = 0; i < stdDpt.CoursesInDept.Count; i++)
+            //stdCrsToAdd.StudentCourses.ToList().IntersectBy(std.Department.CoursesInDept.ToList(), x => x.CrsId);
+            //stdCrsToAdd.StudentCourses.ToList().IntersectBy(std.Department.CoursesInDept.ToList(), x => x.CrsId);
+            for (int i = 0; i < std.Department.CoursesInDept.Count; i++)
             {
-                stdCrsToAdd.StudentCourses.Add(new StudentCourses { StdId = std.Id, CrsId = stdDpt.CoursesInDept[i].CrsID });
+                stdCrsToAdd.StudentCourses.Add(new StudentCourses { StdId = std.Id, CrsId = std.Department.CoursesInDept[i].CrsID });
             }
             stdCrsToAdd.StudentCourses = stdCrsToAdd.StudentCourses.DistinctBy(x => x.CrsId).ToList();
+
+            List<StudentCourses> studentCoursesTemp = stdCrsToAdd.StudentCourses.ToList();
+
+            //studentCoursesTemp.IntersectBy(stdDpt.)
+
             _db.SaveChanges();
             List<StudentCourses> stdCrs = _db.Students.Include(x => x.StudentCourses).ThenInclude(x => x.Course).AsNoTracking().FirstOrDefault(x => x.Id == id).StudentCourses;
 
