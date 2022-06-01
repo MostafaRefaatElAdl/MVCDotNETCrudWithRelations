@@ -1,3 +1,5 @@
-# ASP.NET CRUD with Entityframework Using SQL Database with some relations 
+# ASP.NET CRUD 
+with Entityframework Using SQL Database with some relations 
 
-##Demo
+## Demo
+![](MVC-CRUD-Relations.gif)
